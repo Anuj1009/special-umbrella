@@ -1,0 +1,33 @@
+#optionShow{
+	    border-radius: 20px;
+	background-color: #00ffff;
+	height: 40px;
+	width: 50%;
+
+}
+#optionAdd{
+	    border-radius: 20px;
+	background-color: #ff0000;
+	height: 40px;
+		width: 50%;
+}
+#headPanel{
+	width: 100%;
+	display: inline-flex;
+}
+#panelContent{
+	    border-radius: 20px;
+	    background-color: rgba(255, 0, 227, 0.61);
+    height: 310px;
+}
+.labels{}
+#optionSignup{
+	  border-radius: 20px;
+	background-color: #fff000;
+	height: 40px;
+		width: 50%;
+}
+
+#useroptions{
+	display: none;
+}

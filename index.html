@@ -1,0 +1,129 @@
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="index.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function(){
+
+    $("#optionShow").click(function(){
+       $(".modal-body").load();
+       $("#myModal").modal('show'); 
+    });
+
+     $("#sendmessagesave").click(function(){ 
+			     	var name =$("#name").val();
+			     	var email =$("#email").val();
+			     	var message =$("#message").val();
+			     	debugger;
+			     	var postData =
+			     	{
+			     		"operation":"save",
+			     		"Name":name,
+			     		"Email":email,
+			   			"Message":message
+			     	}
+			     		debugger;
+
+			$.ajax({     
+			   type: "POST",
+			   cache: false,
+			   url: "save.php",
+			   datatype:"json",
+			   data: postData,
+			   
+			   success: function(data) {
+			   
+			   	if(data!="")
+			   	{  debugger;
+			   		alert("DATA SAVED");
+			   		clearing();
+			   			
+			   	}
+			   	else
+			   		alert("data not saved");
+			    
+			   },
+			   error: function(){
+			    
+			   }
+			  });//ajax function closing
+		});//event on save button in modal
+
+$("#optionSignup").click(function(){
+	$("#useroptions").show(function(){
+
+	});
+	});// edit and show option
+
+
+	$("#edit").click(function(){
+		
+	});// edit option
+
+
+    }); // parent query
+
+    function clearing(){
+		$(".fields").val("");
+		}  
+</script>
+</head>
+<body>
+<div id="headPanel">
+<div id="optionSignup"></div>
+<div id="optionShow"></div>
+<div id="optionAdd"></div>
+</div>
+<div id="panelContent"></div>
+</body>
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+
+
+        <div class="modal-body">
+				<form id="formm" action="/my-handling-form-page" method="post">
+                <div>
+                    <label for="name">Name:</label>
+                    <input class="fields" type="text" id="name" name="user_name" />
+                </div>
+                <div>
+                    <label for="email">E-mail:</label>
+                    <input  class="fields" type="email" id="email" name="user_mail" />
+                </div>
+                <div>
+                    <label for="msg">Message:</label>
+                    <textarea  class="fields" id="message" name="message"></textarea>
+                </div>
+                
+                <div class="button">
+                    <button  id="sendmessagesave"  type="button">Send your message</button>
+                </div>
+            </form>
+
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+</div>    
+
+
+<div class="showedit" id="useroptions">
+<button type="button" id="edit">CLICK FOR EDIT</button>
+<button type="button" id="save">CLICK FOR SAVE</button>
+</div>
+</html>
